@@ -1,0 +1,26 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# Java 컴파일 결과물
+*.class
+bin/
+build/
+
+# Maven / Gradle (혹시 쓰게 되면)
+target/
+.gradle/
+
+# 로그, 임시 파일
+*.log
+*.tmp
+
+# OS 파일
+.DS_Store
+Thumbs.db
