@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게임 화면 시작 페이지</title>
+    <style>
+      /* 1. 배경이 전체 화면을 채우게 */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(#ff8e00, #ffefdb);
+      }
+
+      /* 2. 곡선 텍스트 (SVG textPath 사용) */
+      .title-arc {
+        font-size: 48px;
+        font-weight: 800;
+        fill: #a15c1e;
+      }
+
+      /* 3. 버튼 자체를 스타일링, 안에 <a> 안 넣음 */
+      button {
+        margin-top: 40px;
+        padding: 14px 40px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background: #d98a3d;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #c67a2e;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="500" height="250" viewBox="0 0 500 250">
+      <path
+        id="curve"
+        d="M 40 220 A 260 260 0 0 1 460 220"
+        fill="transparent"
+      />
+      <!-- x=40, y=220 지점에 놓고 A는 호(Arc)를 그리고 뒤에 붙는 숫자들이 순서대로 가로 반지름(260), 세로 반지름(260), 회전각(0), large-arc-flag(0), sweep-flag(1), 끝점 x(462), 끝점 y(220) -->
+      <text class="title-arc">
+        <textPath href="#curve" startOffset="50%" text-anchor="middle">
+          <!-- 글자를 곡선의 50% 지점부터 시작 -->
+          MEMORISE GAME
+        </textPath>
+      </text>
+    </svg>
+
+    <button onclick="location.href = 'level1.html'">START</button>
+  </body>
+</html>
