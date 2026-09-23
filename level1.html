@@ -1,11 +1,46 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>level 1</title>
-  </head>
-  <body>
-    아직 구현 안 됨
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>level 1</title>
+  <style>
+    #board {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 10px;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>LEVEL 1</h2>
+
+  <div id="board"></div>
+  <script src="./js/temporary.js"></script>
+  <script>
+    cardShuffle()
+
+    let board = document.querySelector("#board") // css 선택자와 일치하는 첫번째 요소 하나만 반환하는 메서드
+
+    arr.forEach((num) => {
+      let img = document.createElement("img")
+
+      // img 태그에 card 클래스 추가
+      img.classList.add("card")
+      img.src = `./img/img${num}.png`; // 파일 경로 예 : num이 3이면 ./img/3.png 형식 사진 이름을 숫자로
+
+      //사진을 board에 추가
+      board.appendChild(img)
+    });
+  </script>
+</body>
+
 </html>
