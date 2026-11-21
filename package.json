@@ -1,0 +1,37 @@
+{
+  "name": "memory-game",
+  "version": "1.0.0",
+  "description": "동아리 발표회용 메모리 게임 (혼자하기 / 한 노트북 2창 경쟁)",
+  "author": "CPU",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.club.memorygame",
+    "productName": "MemoryGame",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**",
+      "src/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

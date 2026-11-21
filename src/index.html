@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>메모리 게임</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── 시작 화면 ───────────────────────────────────────────── -->
+  <section class="screen" data-screen="menu">
+    <div class="panel">
+      <h1 class="logo">MEMORY<span>GAME</span></h1>
+      <p class="sub">같은 그림 두 장을 찾아서 짝을 맞추세요</p>
+      <div class="menu-buttons">
+        <button type="button" id="btn-solo" class="btn primary">메모리게임 스타트</button>
+        <button type="button" id="btn-versus" class="btn">경쟁하기</button>
+      </div>
+      <p class="hint">경쟁하기를 누르면 창 2개가 좌우로 열려요</p>
+    </div>
+  </section>
+
+  <!-- ── 게임 화면 ───────────────────────────────────────────── -->
+  <section class="screen" data-screen="play">
+    <header class="hud">
+      <span class="hud-item level" id="hud-level">LEVEL 1</span>
+      <span class="hud-item">남은 시간 <b id="hud-time">00:00</b></span>
+      <span class="hud-item">뒤집은 횟수 <b id="hud-flips">0 / 0</b></span>
+      <span class="hud-item">맞춘 쌍 <b id="hud-pairs">0 / 0</b></span>
+      <span class="hud-item rival" id="rival-panel" hidden><b id="rival">상대 준비 중…</b></span>
+    </header>
+
+    <div class="stage">
+      <!-- 장애물이 카드판 위에서만 움직이도록 같이 묶어둠 -->
+      <div class="board-area">
+        <div class="board" id="board"></div>
+        <div class="obstacle-layer" id="obstacle-layer"></div>
+      </div>
+      <div class="overlay" id="overlay"></div>
+    </div>
+  </section>
+
+  <!-- ── 혼자하기 결과 화면 ──────────────────────────────────── -->
+  <section class="screen" data-screen="result">
+    <div class="panel">
+      <h2 class="big" id="result-title">클리어!</h2>
+      <div class="detail" id="result-detail"></div>
+      <div class="menu-buttons">
+        <button type="button" id="btn-retry" class="btn primary">다시하기</button>
+        <button type="button" id="btn-menu" class="btn">처음 화면으로</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 경쟁하기 결과 화면 ──────────────────────────────────── -->
+  <section class="screen" data-screen="versus-result">
+    <div class="panel">
+      <h2 class="big" id="vs-title">승리!</h2>
+      <div class="detail" id="vs-detail"></div>
+      <div class="menu-buttons">
+        <button type="button" id="btn-vs-retry" class="btn primary">다시하기</button>
+        <button type="button" id="btn-vs-quit" class="btn">경쟁 끝내기</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 공통 로직부터 순서대로 불러오기 -->
+  <script src="js/config.js"></script>
+  <script src="js/rng.js"></script>
+  <script src="js/shuffle.js"></script>
+  <script src="js/grade.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/screens.js"></script>
+  <script src="js/hud.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/obstacle.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/bridge.js"></script>
+  <script src="js/solo.js"></script>
+  <script src="js/versus.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
