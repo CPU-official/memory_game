@@ -1,6 +1,6 @@
 {
   "name": "memory-game",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "동아리 발표회용 메모리 게임 (혼자하기 / 한 노트북 2창 경쟁)",
   "author": "CPU",
   "main": "electron/main.js",
@@ -15,6 +15,7 @@
   "build": {
     "appId": "com.club.memorygame",
     "productName": "MemoryGame",
+    "artifactName": "${productName}-${version}.${ext}",
     "directories": {
       "output": "dist"
     },
