@@ -1,28 +1,18 @@
-# IntelliJ IDEA
-.idea/
-*.iml
-*.iws
-*.ipr
-out/
+# 설치된 패키지 (npm install 하면 생김, 용량 큼)
+node_modules/
 
-# VS Code
-.vscode/
-
-# Java 컴파일 결과물
-*.class
-bin/
+# 빌드 결과물 (exe 등)
+dist/
 build/
 
-# Maven / Gradle (혹시 쓰게 되면)
-target/
-.gradle/
+# 에디터 설정
+.idea/
+.vscode/
 
-# 로그, 임시 파일
-*.log
-*.tmp
-
-# OS 파일
+# OS가 만드는 파일
 .DS_Store
 Thumbs.db
 
-js/temporary.js
+# 로그
+npm-debug.log*
+*.log
