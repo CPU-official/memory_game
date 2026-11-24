@@ -22,6 +22,7 @@
       "electron/**",
       "src/**",
       "images/**",
+      "index.html",
       "package.json"
     ],
     "win": {

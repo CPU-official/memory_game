@@ -9,7 +9,7 @@ MG.config = {
   // 그 파일 이름을 아래에 순서대로 적으면 됨.
   //   레벨1 = 앞에서 6개만 사용 (6쌍 = 12장)
   //   레벨2 = 12개 전부 사용   (12쌍 = 24장)
-  assetBase: "../images/",
+  assetBase: "images/",
   cardImages: [
     "1.png",
     "2.png",

@@ -3,11 +3,11 @@
 //  1) 혼자하기 창 1개 띄우기
 //  2) "경쟁하기" 누르면 한 화면에 창 2개를 좌우로 띄우고, 두 창끼리 메시지 전달해주기
 
-const { app, BrowserWindow, ipcMain, screen } = require('electron');
-const path = require('path');
+const { app, BrowserWindow, ipcMain, screen } = require("electron");
+const path = require("path");
 
-const INDEX = path.join(__dirname, '..', 'src', 'index.html');
-const PRELOAD = path.join(__dirname, 'preload.js');
+const INDEX = path.join(__dirname, "..", "index.html");
+const PRELOAD = path.join(__dirname, "preload.js");
 
 let menuWin = null;
 let versusWins = [];
@@ -15,13 +15,13 @@ let closingVersus = false;
 
 function baseOptions() {
   return {
-    backgroundColor: '#0d1117',
+    backgroundColor: "#0d1117",
     autoHideMenuBar: true,
     webPreferences: {
       preload: PRELOAD,
       contextIsolation: true,
-      nodeIntegration: false
-    }
+      nodeIntegration: false,
+    },
   };
 }
 
@@ -32,10 +32,12 @@ function createMenuWindow() {
     height: 780,
     minWidth: 820,
     minHeight: 640,
-    title: '메모리 게임'
+    title: "메모리 게임",
   });
-  menuWin.loadFile(INDEX, { query: { mode: 'solo' } });
-  menuWin.on('closed', () => { menuWin = null; });
+  menuWin.loadFile(INDEX, { query: { mode: "solo" } });
+  menuWin.on("closed", () => {
+    menuWin = null;
+  });
 }
 
 function openVersusWindows() {
@@ -52,10 +54,10 @@ function openVersusWindows() {
       x: x + (player === 1 ? 0 : half),
       y: y,
       resizable: true,
-      title: `메모리 게임 - ${player}번 플레이어`
+      title: `메모리 게임 - ${player}번 플레이어`,
     });
-    win.loadFile(INDEX, { query: { mode: 'versus', player: String(player) } });
-    win.on('closed', () => {
+    win.loadFile(INDEX, { query: { mode: "versus", player: String(player) } });
+    win.on("closed", () => {
       // 한 창을 닫으면 경쟁 모드를 전부 종료하고 메뉴로 돌아감
       if (closingVersus) return;
       closeVersusWindows();
@@ -68,7 +70,9 @@ function openVersusWindows() {
 
 function closeVersusWindows() {
   closingVersus = true;
-  versusWins.forEach((w) => { if (!w.isDestroyed()) w.close(); });
+  versusWins.forEach((w) => {
+    if (!w.isDestroyed()) w.close();
+  });
   versusWins = [];
   closingVersus = false;
 
@@ -80,23 +84,23 @@ function closeVersusWindows() {
   }
 }
 
-ipcMain.on('versus:open', openVersusWindows);
-ipcMain.on('versus:quit', closeVersusWindows);
+ipcMain.on("versus:open", openVersusWindows);
+ipcMain.on("versus:quit", closeVersusWindows);
 
 // 한 창에서 보낸 메시지를 경쟁 중인 모든 창에 그대로 뿌려줌
-ipcMain.on('versus:broadcast', (_event, message) => {
+ipcMain.on("versus:broadcast", (_event, message) => {
   versusWins.forEach((w) => {
-    if (!w.isDestroyed()) w.webContents.send('versus:message', message);
+    if (!w.isDestroyed()) w.webContents.send("versus:message", message);
   });
 });
 
 app.whenReady().then(() => {
   createMenuWindow();
-  app.on('activate', () => {
+  app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createMenuWindow();
   });
 });
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") app.quit();
 });
